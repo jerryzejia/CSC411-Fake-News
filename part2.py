@@ -11,8 +11,6 @@ def small_multiplication(n):
 
 
 def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_set, training_label, test):
-    length = len(test)
-    P_real = float(training_label.count(1))/float(len(training_label))
     P_fake = float(training_label.count(0))/float(len(training_label))
 
 
