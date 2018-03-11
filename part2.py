@@ -12,7 +12,33 @@ def small_multiplication(n):
 
 def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_set, training_label, test):
     length = len(test)
+    P_real = float(training_label.count(1))/float(len(training_label))
+    P_fake = float(training_label.count(0))/float(len(training_label))
 
+
+    real_chances = [] 
+    fake_chances = [] 
+    for word, frequency in real_frequency_dictionary.iteritems():
+        P_frequency = frequency/float(training_label.count(1))
+        if word in test:
+            real_chances.append(P_frequency)
+        else:
+            real_chances.append(P_frequency)
+
+
+    for word, frequency in fake_frequency_dictionary.iteritems():
+        P_frequency = frequency/float(training_label.count(0))
+        if word in test:
+            fake_chances.append(P_frequency)
+        else:
+            fake_chances.append(P_frequency)
+
+
+
+    if P > 0.5:
+        return 1 
+    else:
+        return 0 
 
 
     return
