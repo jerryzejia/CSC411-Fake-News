@@ -1,13 +1,21 @@
 import math 
 
+def small_multiplication(n):
+    log_sum = 0 
+    for num in n:
+        log_sum += math.log(num)
+    exponent = math.exp(log_sum)
+    return exponent 
 
-def native_bayes():
+
+
+
+def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_set, training_label, test):
+    length = len(test)
+
 
 
     return
-
-
-
 
 
 
