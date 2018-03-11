@@ -50,6 +50,11 @@ def create_set():
             training_set.append(content_real[i])
             training_label.append(1)
 
+    return training_set, testing_set, validation_set, training_label, testing_label, validation_label
+
+
+
+
 
     
     
