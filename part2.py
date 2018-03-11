@@ -18,12 +18,13 @@ def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_
 
     real_chances = [] 
     fake_chances = [] 
+
     for word, frequency in real_frequency_dictionary.iteritems():
         P_frequency = frequency/float(training_label.count(1))
         if word in test:
             real_chances.append(P_frequency)
         else:
-            real_chances.append(P_frequency)
+            real_chances.append(1. - P_frequency)
 
 
     for word, frequency in fake_frequency_dictionary.iteritems():
@@ -31,9 +32,13 @@ def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_
         if word in test:
             fake_chances.append(P_frequency)
         else:
-            fake_chances.append(P_frequency)
+            fake_chances.append(1. - P_frequency)
 
 
+    P_words_fake = small_multiplication(fake_chances)
+
+
+    P = P_fake * P_words_fake
 
     if P > 0.5:
         return 1 
