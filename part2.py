@@ -10,13 +10,13 @@ def small_multiplication(n):
 
 
 
-def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_set, training_label, test):
+def naive_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_set, training_label, test):
     P_fake = float(training_label.count(0))/float(len(training_label))
-
+    P_real = float(training_label.count(1))/float(len(training_label))
 
     real_chances = [] 
     fake_chances = [] 
-
+    test = test.split(" ")
     for word, frequency in real_frequency_dictionary.iteritems():
         P_frequency = frequency/float(training_label.count(1))
         if word in test:
@@ -34,9 +34,12 @@ def native_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_
 
 
     P_words_fake = small_multiplication(fake_chances)
+    P_fake_words = P_fake * P_words_fake
 
+    P_words_real = small_multiplication(real_chances)
+    P_real_words = P_real * P_words_real
 
-    P = P_fake * P_words_fake
+    P = P_real_words/(P_fake_words+P_real_words)
 
     if P > 0.5:
         return 1 
@@ -59,14 +62,15 @@ def word_frequency(training_set, training_label):
         title = training_set[i]
         label = training_label[i]
         words = title.split(" ")
-        for word in words:
+
+        for word in list(set(words)):
             if label == 1:
-                if not real_frequency_dictionary[word]:
+                if word not in real_frequency_dictionary:
                     real_frequency_dictionary[word] = 1 
                 else:
                     real_frequency_dictionary[word] += 1 
             else:
-                if not fake_frequency_dictionary[word]:
+                if word not in fake_frequency_dictionary:
                     fake_frequency_dictionary[word] = 1 
                 else:
                     fake_frequency_dictionary[word] += 1 

@@ -5,7 +5,7 @@ def create_set():
     real, fake = [], []
     training_label, testing_label, validation_label = [], [], [] 
     training_set, testing_set, validation_set = [], [], [] 
-    random.seed(0)
+    random.seed(5)
 
     content_fake = [] 
     with open("clean_fake.txt") as f:
@@ -26,7 +26,7 @@ def create_set():
     for i in range(len(content_fake)):
         if i < 0.15*len(content_fake):
             testing_set.append(content_fake[i])
-            testing_set.append(0)
+            testing_label.append(0)
 
         elif i < 0.30*len(content_fake):
             validation_set.append(content_fake[i])
@@ -40,7 +40,7 @@ def create_set():
     for i in range(len(content_real)):
         if i < 0.15*len(content_real):
             testing_set.append(content_real[i])
-            testing_set.append(1)
+            testing_label.append(1)
 
         elif i < 0.30*len(content_real):
             validation_set.append(content_real[i])
