@@ -28,5 +28,28 @@ def create_set():
             testing_set.append(content_fake[i])
             testing_set.append(0)
 
+        elif i < 0.30*len(content_fake):
+            validation_set.append(content_fake[i])
+            validation_label.append(0)
+        
+        else:
+            training_set.append(content_fake[i])
+            training_label.append(0)
+
+
+    for i in range(len(content_real)):
+        if i < 0.15*len(content_real):
+            testing_set.append(content_real[i])
+            testing_set.append(1)
+
+        elif i < 0.30*len(content_real):
+            validation_set.append(content_real[i])
+            validation_label.append(1)
+        
+        else:
+            training_set.append(content_real[i])
+            training_label.append(1)
+
+
     
     
