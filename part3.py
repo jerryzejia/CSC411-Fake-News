@@ -40,8 +40,86 @@ stop_word = [
     "who", "whoever", "whole", "whom", "whose", "why", "will", "with",
     "within", "without", "would", "yet", "you", "your", "yours", "yourself",
     "yourselves"]
+
+from part2 import *
+from create_set import *
+import operator 
+
+def word_count(): 
+
+
+
+    training_set, testing_set, validation_set, training_label, testing_label, validation_label = create_set()
+    real_dict, fake_dict = word_frequency(training_set, training_label)
     
-def count(training_set):
-    return
+    sort_real = list(sorted(real_dict, key=real_dict.get))
+    sort_fake = list(sorted(fake_dict, key=fake_dict.get))
+
+    print "===========================================Most Appeard==========================================="
+    print 'real'
+    for i in range(10):
+        print sort_real[i]
+
+    print 
+
+    print 'fake'
+    
+    for i in range(10):
+        print sort_fake[i]
+
+    print "===========================================Least Appeard==========================================="
+    sort_real = list(sorted(real_dict, key=real_dict.get, reverse=True))
+    sort_fake = list(sorted(fake_dict, key=fake_dict.get, reverse=True))
+    print 'real'
+    for i in range(10):
+        print sort_real[i]
+
+    print 
+
+    print 'fake'
+    
+    for i in range(10):
+        print sort_fake[i]
+
+
+    print "===========================================No Stop Word==========================================="
+
+    for word in stop_word:
+        if word in real_dict:
+            del real_dict[word]
+        if word in fake_dict:
+            del fake_dict[word]
+
+    print "===========================================Most Appeard==========================================="
+    print 'real'
+    for i in range(10):
+        print sort_real[i]
+
+    print 
+
+    print 'fake'
+    
+    for i in range(10):
+        print sort_fake[i]
+
+    print "===========================================Least Appeard==========================================="
+    sort_real = list(sorted(real_dict, key=real_dict.get, reverse=True))
+    sort_fake = list(sorted(fake_dict, key=fake_dict.get, reverse=True))
+    print 'real'
+    for i in range(10):
+        print sort_real[i]
+
+    print 
+
+    print 'fake'
+    
+    for i in range(10):
+        print sort_fake[i]
+
+
+
+
+word_count()        
+
 
 

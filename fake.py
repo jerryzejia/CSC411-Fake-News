@@ -1,6 +1,6 @@
 from part2 import *
 from create_set import *
-
+from part3 import *
 def part2():
     training_set, testing_set, validation_set, training_label, testing_label, validation_label = create_set()
     answer = []
@@ -16,8 +16,8 @@ def part2():
     for i in range(len(testing_set)):
         if (testing_label[i] == answer[i]):
             correct += 1 
-    print correct
     
+    print correct
     print "accuracy"
     print correct/float(len(testing_set))
 
@@ -25,6 +25,8 @@ def part2():
     
     return 
 
+def part3():
+    word_count()
 
 
         
