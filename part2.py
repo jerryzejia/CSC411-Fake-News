@@ -50,7 +50,6 @@ def naive_bayes(real_frequency_dictionary, fake_frequency_dictionary, training_s
     return
 
 
-
 def word_frequency(training_set, training_label):
     '''
     Fake News Frequency Counter 
