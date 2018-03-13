@@ -54,7 +54,19 @@ def create_set():
 
 
 
+def set_conversion(training_set, testing_set, validation_set, training_label, testing_label, validation_label, word_num, file_num):
+    training_set_vector = np.zeros((file_num, word_num))
+    i = 0 
+    for i in range(file_num):
+        return 
 
 
-    
+
+
+
+def input_num(train_data, word_list):
+    return
+
+
+
     
