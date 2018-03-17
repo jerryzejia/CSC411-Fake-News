@@ -55,16 +55,33 @@ def create_set():
 
 
 def set_conversion(training_set, testing_set, validation_set, training_label, testing_label, validation_label, word_num, file_num):
-    training_set_vector = np.zeros((file_num, word_num))
+    complete_word_set = create_complete_set(training_set, testing_set,  validation_set)
+
+
+    for tr in training set:      
+        training_set_vector = np.zeros((len(complete_word_set), 1))
+    
+
+
     i = 0 
     for i in range(file_num):
         return 
 
 
-
+def create_complete_set(training_set, testing_set,  validation_set)
+    complete_set = [training_set + testing_set + validation_set]
+    complete_word_set = []
+    for element in complete_set:
+        for word in complete_set:
+            if word not in complete_word_set:
+                complete_word_set.append(word)
+    return complete_word_set 
 
 
 def input_num(train_data, word_list):
+
+
+
     return
 
 
