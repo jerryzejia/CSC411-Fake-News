@@ -56,33 +56,39 @@ def create_set():
 
 def set_conversion(training_set, testing_set, validation_set, training_label, testing_label, validation_label, word_num, file_num):
     complete_word_set = create_complete_set(training_set, testing_set,  validation_set)
+    training_set_classifier = np.zeros(len(training_set) ,(len(complete_word_set)))
+
+    for i in range(len(training_set)):      
+        for word in training_set[i]:
+            training_set_classifier[i][complete_word_set.index(word)] = 1
+
+    testing_set_classifier = np.zeros(len(training_set) ,(len(complete_word_set)))
+    for i in range(len(testing_set)):      
+        for word in testing_set[i]:
+            testing_set_classifier[i][complete_word_set.index(word)] = 1
 
 
-    for tr in training set:      
-        training_set_vector = np.zeros((len(complete_word_set), 1))
-    
+    validation_set_classifier = np.zeros(len(training_set) ,(len(complete_word_set)))
+    for i in range(len(validation_set)):      
+        for word in validation_set[i]:
+            validation_set_classifier[i][complete_word_set.index(word)] = 1
+
+    return training_set_classifier, validation_set_classifier, testing_set_classifier
 
 
-    i = 0 
-    for i in range(file_num):
-        return 
 
 
-def create_complete_set(training_set, testing_set,  validation_set)
+def create_complete_set(training_set, testing_set,  validation_set):
     complete_set = [training_set + testing_set + validation_set]
     complete_word_set = []
     for element in complete_set:
         for word in complete_set:
             if word not in complete_word_set:
                 complete_word_set.append(word)
+    random.seed(0)
+    complete_word_set = random.shuffle(complete_word_set)
     return complete_word_set 
 
-
-def input_num(train_data, word_list):
-
-
-
-    return
 
 
 
