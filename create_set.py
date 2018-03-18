@@ -54,23 +54,24 @@ def create_set():
 
 
 
-def set_conversion(training_set, testing_set, validation_set, training_label, testing_label, validation_label, word_num, file_num):
+def set_conversion(training_set, testing_set, validation_set):
+    training_set, testing_set, validation_set = list(training_set), list(testing_set), list(validation_set)
     complete_word_set = create_complete_set(training_set, testing_set,  validation_set)
-    training_set_classifier = np.zeros(len(training_set) ,(len(complete_word_set)))
+    training_set_classifier = np.zeros((len(training_set) ,len(complete_word_set)))
 
     for i in range(len(training_set)):      
-        for word in training_set[i]:
+        for word in training_set[i].split():
             training_set_classifier[i][complete_word_set.index(word)] = 1
 
-    testing_set_classifier = np.zeros(len(training_set) ,(len(complete_word_set)))
+    testing_set_classifier = np.zeros((len(testing_set) ,len(complete_word_set)))
     for i in range(len(testing_set)):      
-        for word in testing_set[i]:
+        for word in testing_set[i].split():
             testing_set_classifier[i][complete_word_set.index(word)] = 1
 
 
-    validation_set_classifier = np.zeros(len(training_set) ,(len(complete_word_set)))
+    validation_set_classifier = np.zeros((len(validation_set) ,len(complete_word_set)))
     for i in range(len(validation_set)):      
-        for word in validation_set[i]:
+        for word in validation_set[i].split():
             validation_set_classifier[i][complete_word_set.index(word)] = 1
 
     return training_set_classifier, validation_set_classifier, testing_set_classifier
@@ -79,14 +80,16 @@ def set_conversion(training_set, testing_set, validation_set, training_label, te
 
 
 def create_complete_set(training_set, testing_set,  validation_set):
-    complete_set = [training_set + testing_set + validation_set]
+    complete_set = []
+    complete_set.extend(training_set)
+    complete_set.extend(testing_set)
+    complete_set.extend(validation_set)
     complete_word_set = []
     for element in complete_set:
-        for word in complete_set:
+        for word in element.split():
             if word not in complete_word_set:
                 complete_word_set.append(word)
     random.seed(0)
-    complete_word_set = random.shuffle(complete_word_set)
     return complete_word_set 
 
 
