@@ -60,7 +60,7 @@ def word_frequency(training_set, training_label):
     for i in range(len(training_set)):
         title = training_set[i]
         label = training_label[i]
-        words = title.split(" ")
+        words = title.split()
         for word in list(set(words)):
             if label == 1:
                 if word not in real_frequency_dictionary:

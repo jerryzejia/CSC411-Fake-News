@@ -1,15 +1,13 @@
 from part2 import *
 from create_set import *
-#from part3 import *
+from part3 import *
 def part2():
     training_set, testing_set, validation_set, training_label, testing_label, validation_label = create_set()
     answer = []
     
-    print training_label
     real_dict, fake_dict = word_frequency(training_set, training_label)
 
 
-    print real_dict['trump']
     for i in range(len(validation_set)):
         ans = naive_bayes(real_dict, fake_dict, training_set, training_label, validation_set[i])
         answer.append(ans)
@@ -48,7 +46,6 @@ def part2():
     for i in range(len(testing_set)):
         ans = naive_bayes(real_dict, fake_dict, training_set, training_label, testing_set[i])
         answer.append(ans)
-    
     correct = 0 
 
     for i in range(len(testing_set)):
@@ -66,8 +63,8 @@ def part2():
     return 
 
 def part3():
-    #word_count()
-    return
+    word_count()
+    
 
         
 part2()

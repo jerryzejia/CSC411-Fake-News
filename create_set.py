@@ -19,7 +19,7 @@ def create_set():
         for line in _real_content:
             content_real.append(line.strip())
 
-    random.seed(42)
+    random.seed(0)
 
     random.shuffle(content_fake)
     random.shuffle(content_real)
@@ -90,7 +90,6 @@ def create_complete_set(training_set, testing_set,  validation_set):
         for word in sentence.split():
             if word not in complete_word_set:
                 complete_word_set.append(word)
-    print len(complete_word_set)
     return complete_word_set 
 
 
